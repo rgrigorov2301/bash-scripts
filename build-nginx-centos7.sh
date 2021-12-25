@@ -10,5 +10,5 @@ curl http://nginx.org/packages/rhel/7Server/SRPMS/nginx-1.20.2-1.el7.ngx.src.rpm
 git clone https://github.com/gabihodoroaga/nginx-ntlm-module.git /tmp/nginx-ntlm-module
 rpm -ivh nginx-1.20.2-1.el7.ngx.src.rpm
 rpm2cpio nginx-1.20.2-1.el7.ngx.src.rpm | cpio -idmv
-curl http://gate.sbi-bg.com/nginx-with-ntlm.spec > /tmp/nginx-with-ntlm.spec
+curl https://raw.githubusercontent.com/rgrigorov2301/bash-scripts/main/nginx-with-ntlm.spec > /tmp/nginx-with-ntlm.spec
 rpmbuild -bb nginx-with-ntlm.spec
