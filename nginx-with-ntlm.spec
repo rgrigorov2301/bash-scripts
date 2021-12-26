@@ -245,17 +245,34 @@ if [ $1 -eq 1 ]; then
     cat <<BANNER
 ----------------------------------------------------------------------
 
-Thanks for using nginx!
+Thanks for using nginx with ntlm module!
 
-Please find the official documentation for nginx here:
-* https://nginx.org/en/docs/
+Please find the documentation for modules here:
+* https://github.com/gabihodoroaga/nginx-ntlm-module.git
+* https://raw.githubusercontent.com/rgrigorov2301/bash-scripts/main/build-nginx-centos7.sh
 
-Please subscribe to nginx-announce mailing list to get
-the most important news about nginx:
-* https://nginx.org/en/support.html
+How to use
 
-Commercial subscriptions for nginx are available on:
-* https://nginx.com/products/
+    Syntax: ntlm [connections];
+    Default: ntlm 100;
+    Context: upstream
+
+upstream http_backend {
+    server 127.0.0.1:8080;
+
+    ntlm;
+}
+
+server {
+    ...
+
+    location /http/ {
+        proxy_pass http://http_backend;
+        # next 2 settings are required for the keepalive to work properly
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+    }
+}
 
 ----------------------------------------------------------------------
 BANNER
