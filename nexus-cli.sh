@@ -10,7 +10,7 @@ fi
 
 # Check if nexus-cli installed
 if [ ! -f "/root/nexus-cli" ]; then
-    wget https://s3.eu-west-2.amazonaws.com/nexus-cli/1.0.0-beta/linux/nexus-cli -o /root/nexus-cli
+    curl https://s3.eu-west-2.amazonaws.com/nexus-cli/1.0.0-beta/linux/nexus-cli -o /root/nexus-cli
     chmod +x /root/nexus-cli
     /root/nexus-cli configure
 fi
